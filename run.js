@@ -1,96 +1,38 @@
-var config = {
-    // add extensions bellow and the script will go through them
-    "Documents": [
-        "pdf",
-        "doc",
-        "docx",
-        "csv",
-        "xls",
-        "xlsx",
-        "txt",
-        "rtf",
-        "odt",
-        "ppt",
-        "pptx",
-        "pptm",
-        "xml",
-        "klm"
-    ],
-    "Databases": [
-        "php",
-        "sql",
-        "sqlite",
-        "pdb",
-        "idb",
-        "cdb",
-        "sis",
-        "odb"
-    ],
-    "Software": [
-        "env",
-        "cfg",
-        "conf",
-        "config",
-        "cfm",
-        "log",
-        "inf"
-    ]
-    "Misconfig": [
-        "env",
-        "cfg",
-        "conf",
-        "config",
-        "cfm",
-        "log",
-        "inf"
-    ]
+const dorkCategories = {
+  "Misconfigured Interfaces": [
+    "intitle:index.of",
+    "inurl:.svn",
+    "inurl:/owa/auth/logon.aspx",
+    "inurl:/admin/login.php",
+    "inurl:/wp-admin/ intext:username",
+    "inurl:/admin/login.php filetype:php",
+    "inurl:/wp-admin/ filetype:php"
+  ],
+  "Exposed Documents": [
+    "filetype:php",
+    "site:{domain} intext:password",
+    "intext:username filetype:log",
+    "inurl:wp-content/uploads",
+    "intext:DB_PASSWORD",
+    "intitle:\"Index of\" passwords.txt",
+    "site:{domain} ext:sql | ext:dbf | ext:mdb",
+    "intext:\"sql syntax near\" | intext:\"syntax error has occurred\" filetype:php",
+    "inurl:backup filetype:mdb",
+    "site:{domain} ext:xml | ext:conf | ext:cnf | ext:reg | ext:inf | ext:rdp | ext:cfg | ext:txt | ext:ora | ext:ini"
+  ],
+  // add more categories and dork queries as needed
 };
-//--------------------------------------------------------------
-//get checkbox elements
-var checkDocuments = document.getElementById("searchDocuments");
-var checkDatabases = document.getElementById("searchDatabases");
-var checkSoftware = document.getElementById("searchSoftware");
-var checkSoftware = document.getElementById("searchMisconfig");
 
-var counter = 0; //global counter for blocked popups
-
-//get text placeholders
-var site = document.getElementById('site');
-
-//--------------------------------------------------------------
-function search() {
-    counter = 0; //reset counter on every click 
-    console.log(counter);
-    //Checking if none of the checkboxes are checked and alerts the user
-    if (!checkDocuments.checked && !checkDatabases.checked && !checkSoftware.checked) && !checkMisconfig.checked) {
-        alert("You have to check one option");
-    }
-
-    //Depending on the checkbox checked, run that query with array provided
-    if (checkDocuments.checked) {
-        searchQuery(config.Documents);
-    }
-    if (checkDatabases.checked) {
-        searchQuery(config.Databases);
-    }
-    if (checkSoftware.checked) {
-        searchQuery(config.Software);
-    }
-    if (checkSoftware.checked) {
-        searchQuery(config.Misconfig);
-    }
-    // Check if it detected blocked popups
-    if (counter > 0) {
-        alert(`Our checker says ${counter} popups might have been blocked, please allow popups and try again!`);
-    }
-}
-function searchQuery(array) {
-    array.forEach(extension => {
-        isBlocked(window.open(`http://google.com/search?q=site%3A${site.value}+filetype%3A${extension}, "_blank"));
+function searchDorks(category, domain) {
+  const dorks = dorkCategories[category];
+  const searchResults = [];
+  dorks.forEach(dork => {
+    const query = dork.replace("{domain}", domain);
+    const searchUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
+    searchResults.push({
+      query: dork,
+      url: searchUrl
     });
-}
-function isBlocked(popupWindow){
-    if (!popupWindow || popupWindow.closed || typeof popupWindow.closed == 'undefined') {
-        counter += 1;
-    }
+  });
+  return searchResults;
 }

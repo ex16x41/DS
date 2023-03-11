@@ -35,10 +35,25 @@ function searchDorks(category, domain) {
     });
   });
 
-  // Open each search result in a new window
+  // Open each search result in the same window
   searchResults.forEach(result => {
-    window.open(result.url, result.query);
+    window.location.href = result.url;
   });
 
   return searchResults;
 }
+
+// Get the form and add a submit event listener
+const form = document.getElementById("search-form");
+form.addEventListener("submit", (event) => {
+  // Prevent the form from submitting normally
+  event.preventDefault();
+
+  // Get the selected category and domain from the form
+  const category = form.elements["category"].value;
+  const domain = form.elements["domain"].value;
+
+  // Call the searchDorks function with the selected category and domain
+  searchDorks(category, domain);
+});
+

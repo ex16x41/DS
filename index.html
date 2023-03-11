@@ -2,21 +2,28 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Google Dork Search Engine</title>
+    <title>Tyr Search Engine</title>
     <link rel="stylesheet" href="style.css">
     <script src="run.js"></script>
   </head>
   <body>
-    <div class="logo">
-      <img src="logo.png" alt="Google Dork Search Engine">
+    <div class="center">
+      <div class="logo">
+        <img src="logo.png" alt="Google Dork Search Engine">
+      </div>
+      <h1>Google Dork Search Engine</h1>
+      <p>A tool for finding misconfigured interfaces and exposed documents online.</p>
+      <div class="search-container">
+        <form onsubmit="return searchDorks()">
+          <select id="category">
+            <option value="Misconfigured Interfaces">Misconfigured Interfaces</option>
+            <option value="Exposed Documents">Exposed Documents</option>
+            <!-- add more options for each category -->
+          </select>
+          <input type="text" id="domain" placeholder="Enter domain name...">
+          <button type="submit">Search</button>
+        </form>
+      </div>
     </div>
-    <div class="search-container">
-      <form onsubmit="return searchDorks()">
-        <select id="category">
-          <option value="Misconfigured Interfaces">Misconfigured Interfaces</option>
-          <option value="Exposed Documents">Exposed Documents</option>
-          <!-- add more options for each category -->
-        </select>
-        <input type="text" id="domain" placeholder="Enter domain name...">
-        <button type="submit">Search</button>
-      </form>
+  </body>
+</html>

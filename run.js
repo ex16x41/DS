@@ -34,5 +34,11 @@ function searchDorks(category, domain) {
       url: searchUrl
     });
   });
+
+  // Open each search result in a new window
+  searchResults.forEach(result => {
+    window.open(result.url, result.query);
+  });
+
   return searchResults;
 }

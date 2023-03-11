@@ -7,29 +7,23 @@
     <script src="run.js"></script>
   </head>
   <body>
-    <div class="center">
-      <div class="logo">
-          <img src="https://user-images.githubusercontent.com/44981946/224496641-43c82f4d-e1b7-4347-806a-28c3562fa9c0.png" alt="Tyr Searcher">
-      </div>
-      <h1>Google Dork Search Engine</h1>
-      <p>A tool for finding misconfigured interfaces and exposed documents online.</p>
-      
       <div class="tip">
-        <span class="emoji">&#x1F4A1;</span> Tip: Use specific keywords in your search to narrow down the results and get more accurate findings.
-      </div>
-      
-      <div class="search-container">
-        <form onsubmit="return searchDorks()">
-          <select id="category">
-			<option value="Misconfigured Interfaces">Misconfigured Interfaces</option>
-			<option value="Exposed Documents">Exposed Documents</option>
-			<option value="Sensitive Directories">Sensitive Directories</option>        
-            <!-- add more options for each category -->
-          </select>
-          <input type="text" id="domain" placeholder="Enter domain name...">
-          <button type="submit">Search</button>
-        </form>
-      </div>
+    <span class="emoji">&#x1F4A1;</span> Tip: Use specific keywords in your search to narrow down the results and get more accurate findings.
+  </div>
+  
+  <div class="search-container">
+    <form onsubmit="event.preventDefault(); searchDorks();">
+      <select id="category">
+		<option value="Misconfigured Interfaces">Misconfigured Interfaces</option>
+		<option value="Exposed Documents">Exposed Documents</option>
+		<option value="Sensitive Directories">Sensitive Directories</option>        
+        <!-- add more options for each category -->
+      </select>
+      <input type="text" id="domain" placeholder="Enter domain name...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</div>
     </div>
   </body>
 </html>

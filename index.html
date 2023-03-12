@@ -20,7 +20,7 @@
 			const searchResults = [];
 
 			dorks.forEach(dork => {
-				const query = dork.replace('{directory}', domain);
+				const query = dork.replace('{directory}', 'site:' + domain);
 				const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
 				searchResults.push({
 					query: dork,

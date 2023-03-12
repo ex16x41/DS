@@ -14,7 +14,7 @@
 	</style>
 		<script type="text/javascript">
 		const dorkCategories = {
-			'Errors Query': [
+			'Technologies': [
 				'intitle:index.of',
 				'intitle:"Index of /" {directory}',
 				'intitle:"Index of /" {directory}'
@@ -28,7 +28,13 @@
 				'intitle:index.of',
 				'intitle:"Index of /" {directory}',
 				'intitle:"Index of /" {directory}'
+			],
+				'OpenRedirects': [
+				'intitle:index.of',
+				'intitle:"Index of /" {directory}',
+				'intitle:"Index of /" {directory}'
 			]
+			
 			// add more categories and dork queries as needed
 		};
 
@@ -90,8 +96,10 @@ emphasising public exposure using the power of Google Dorking and out-of-box que
 		<form onsubmit="return searchDorks(event);">
 			<label for="category">Category:</label>
 			<select id="category">
-				<option value="Targeted Query">Targeted Query</option>
+				<option value="Technologies">Technologies</option>
 				<option value="Misconfigurations">Misconfigurations</option>
+				<option value="Documents">Documents</option>
+				<option value="OpenRedirects">Open Redirects</option>
 				<!-- add more categories here -->
 			</select>
 			<label for="domain">Domain:</label>

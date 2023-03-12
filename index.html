@@ -112,6 +112,7 @@
 	<button onclick="searchGitHub()">GitHub</button>
 	<button onclick="searchPastebin()">Pastebin</button>
 	<button onclick="searchTelegram()">Telegram</button>
+	<button onclick="searchTwitter()">Twitter</button>
 
 	<script>
 	function searchGitHub() {
@@ -137,6 +138,17 @@
 	}
 		
 	  function searchTelegram() {
+	  var site = "site:t.me";
+	  var queries = ["DORK", "DORK"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchTwitter() {
 	  var site = "site:t.co";
 	  var queries = ["DORK", "DORK"];
 	  var keyword = prompt("Enter a keyword:");

@@ -72,5 +72,19 @@
 			<button onclick="window.open('https://www.google.com/search?q=site%3Agithub.com+OR+site%3Agithub.io+'+encodeURIComponent(dorkCategories['GitHub'].join(' OR ')), '_blank')">GitHub</button>
 		</form>
 	</div>
+	
+	<title>Search GitHub</title>
+	<button onclick="searchGitHub()">GitHub</button>
+
+	<script>
+	function searchGitHub() {
+	  var queries = ["inurl:readme filetype:md", "filename:README.md", "filename:package.json"];
+	  var site = "site:github.com OR site:github.io";
+	  for (var i = 0; i < queries.length; i++) {
+	    window.open("https://www.google.com/search?q=" + queries[i] + " " + site, "_blank");
+	  }
+	}
+	</script>
+
 </body>
 </html>

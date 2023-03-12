@@ -33,6 +33,11 @@
 				'intitle:index.of',
 				'intitle:"Index of /" {directory}',
 				'intitle:"Index of /" {directory}'
+			],
+				'Infrastructure': [
+				'intitle:index.of',
+				'intitle:"Index of /" {directory}',
+				'intitle:"Index of /" {directory}'
 			]
 			
 			// add more categories and dork queries as needed
@@ -102,6 +107,8 @@ emphasising public exposure using the power of Google Dorking and out-of-box que
 				<option value="Misconfigurations">Misconfigurations</option>
 				<option value="Documents">Documents</option>
 				<option value="OpenRedirects">Open Redirects</option>
+				<option value="Infrastructure">Infrastructure</option>
+
 				<!-- add more categories here -->
 			</select>
 			<label for="domain">Domain:</label>
@@ -142,6 +149,12 @@ emphasising public exposure using the power of Google Dorking and out-of-box que
 	<button onclick="searchWP()">Wordpress</button>
 	<button onclick="searchDiscord()">Discord</button>
 </div>
+		
+	<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+	<button onclick="searchForums()">Forums</button>
+	<button onclick="searchBlogs()">Blogs</button>
+	<button onclick="searchReddit()">Reddit</button>
+</div>
 
 	</div>
 
@@ -166,7 +179,7 @@ emphasising public exposure using the power of Google Dorking and out-of-box que
 	<script>
 	function searchGitHub() {
 	  var site = "site:github.com OR site:github.io";
-	  var queries = ["inurl:readme filetype:md", "filename:package.json"];
+	  var queries = ["test", "password"];
 	  var keyword = prompt("Enter a keyword:");
 	  if (keyword !== null) {
 	  	for (var i = 0; i < queries.length; i++) {
@@ -255,6 +268,39 @@ emphasising public exposure using the power of Google Dorking and out-of-box que
 	  function searchDiscord() {
 	  var site = "site:t.co";
 	  var queries = ["DORK", "DORK"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchForums() {
+	  var site = "site:*.*";
+	  var queries = ["inurl:tid", "inurl:forum"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchBlogs() {
+	  var site = "site:*.*";
+	  var queries = ["inurl:tid", "inurl:forum"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchReddit() {
+	  var site = "site:*.*";
+	  var queries = ["inurl:tid", "inurl:forum"];
 	  var keyword = prompt("Enter a keyword:");
 	  if (keyword !== null) {
 	  	for (var i = 0; i < queries.length; i++) {

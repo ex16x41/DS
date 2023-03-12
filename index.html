@@ -4,7 +4,7 @@
 	<title>Dork Search</title>
 	<script type="text/javascript">
 		const dorkCategories = {
-			'Sensitive Directories': [
+			'Sensitive Dirs': [
 				'intitle:index.of',
 				'intitle:"Index of /" +{directory}',
 				'intitle:"Index of /" inurl:{directory}'
@@ -42,7 +42,7 @@
 	<form onsubmit="return searchDorks(event);">
 		<label for="category">Category:</label>
 		<select id="category">
-			<option value="Sensitive Directories">Sensitive Directories</option>
+			<option value="Sensitive Dirs">Sensitive Dirs</option>
 			<!-- add more categories here -->
 		</select>
 		<label for="domain">Domain:</label>

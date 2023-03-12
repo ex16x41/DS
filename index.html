@@ -10,48 +10,10 @@
 			justify-content: center;
 			height: 100vh;
 		}
-
-		.creator {
-			font-size: 18px;
-			font-family: Arial, sans-serif;
-			margin-top: 20px;
-			display: flex;
-			align-items: center;
-		}
-
-		.creator span {
-			margin-left: 5px;
-			font-weight: bold;
-		}
-
-		.tips {
-			margin-top: 20px;
-			display: flex;
-			align-items: center;
-		}
-
-		.tips span {
-			margin-right: 10px;
-		}
-
-		.social {
-			margin-top: 10px;
-			display: flex;
-			align-items: center;
-		}
-
-		.social a {
-			margin-right: 10px;
-		}
-
-		.social img {
-			height: 25px;
-			width: 25px;
-		}
 	</style>
 	<script type="text/javascript">
 		const dorkCategories = {
-			'Sensitive Dirs': [
+			'Targeted Query': [
 				'intitle:index.of',
 				'intitle:"Index of /" +{directory}',
 				'intitle:"Index of /" inurl:{directory}'
@@ -87,19 +49,17 @@
 <body>
 	<div class="container">
 		<img src="https://user-images.githubusercontent.com/44981946/224496641-43c82f4d-e1b7-4347-806a-28c3562fa9c0.png" alt="Logo Placeholder">
-		<h1>Dork Search</h1>
+		<h1>Searcher</h1>
 		<form onsubmit="return searchDorks(event);">
 			<label for="category">Category:</label>
 			<select id="category">
-				<option value="Sensitive Dirs">Sensitive Dirs</option>
+				<option value="Targeted Query">Targeted Query</option>
 				<!-- add more categories here -->
 			</select>
 			<label for="domain">Domain:</label>
 			<input type="text" id="domain">
 			<input type="submit" value="Search">
 		</form>
-		<div class="creator">
-			<span>Created by ex16x41 [Eva Prokofiev] <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/magnifying-glass-tilted-left_1f50d.png" alt="Magnifying Glass Emoji"></span>
-		</div>
-		<div class="tips">
-			<span><img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/th
+	</div>
+</body>
+</html>

@@ -15,7 +15,7 @@ function searchDorks(event) {
 	const searchResults = [];
 
 	dorks.forEach(dork => {
-		const query = dork.replace('{domain}', domain);
+		const query = dork.replace('{directory}', domain);
 		const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
 		searchResults.push({
 			query: dork,
@@ -23,9 +23,9 @@ function searchDorks(event) {
 		});
 	});
 
-	// Open each search result in the same window
+	// Open each search result in a new browser tab
 	searchResults.forEach(result => {
-		window.location.href = result.url;
+		window.open(result.url, '_blank');
 	});
 
 	return false;

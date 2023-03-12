@@ -114,6 +114,12 @@
 	<button onclick="searchPastebin()">Pastebin</button>
 	<button onclick="searchTelegram()">Telegram</button>
 	<button onclick="searchTwitter()">Twitter</button>
+	<button onclick="searchGitalt()">Git-Alternatives</button>
+	<button onclick="searchWix()">Wix</button>
+	<button onclick="searchAPKs()">APKs</button>
+	<button onclick="searchWP()">Wordpress</button>
+	<button onclick="searchDiscord()">Discord</button>
+	
 
 	<script>
 	function searchGitHub() {
@@ -150,6 +156,61 @@
 	}
 		
 	  function searchTwitter() {
+	  var site = "site:t.co";
+	  var queries = ["DORK", "DORK"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchGitalt() {
+	  var site = "site:sourceforge.net OR site:github.com OR site:gitlab.com OR site:github.io";
+	  var queries = ["DORK", "DORK"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchWix() {
+	  var site = "site:wix.*.com OR site:*.wix.com OR site:*.wixsite.com";
+	  var queries = ["DORK", "DORK"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchAPKs() {
+	  var site = "apkmirror.com";
+	  var queries = ["DORK", "DORK"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchWP() {
+	  var site = "site:wordpress.com";
+	  var queries = ["DORK", "DORK"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+		
+	  function searchDiscord() {
 	  var site = "site:t.co";
 	  var queries = ["DORK", "DORK"];
 	  var keyword = prompt("Enter a keyword:");

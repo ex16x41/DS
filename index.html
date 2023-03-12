@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Tyr Search Engine</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="run.js"></script>
-  </head>
-  <body>
-      <div class="tip">
-    <span class="emoji">&#x1F4A1;</span> Tip: Use specific keywords in your search to narrow down the results and get more accurate findings.
-  </div>
-  
-  <div class="search-container">
-    <form onsubmit="event.preventDefault(); searchDorks();">
-      <select id="category">
-		<option value="Sensitive Directories">Sensitive Directories</option>        
-        <!-- add more options for each category -->
-      </select>
-      <input type="text" id="domain" placeholder="Enter domain name...">
-      <button type="submit">Search</button>
-    </form>
-  </div>
-</div>
-    </div>
-  </body>
+<head>
+	<title>Dork Search</title>
+	<script type="text/javascript">
+		const dorkCategories = {
+			'Sensitive Directories': [
+				'intitle:index.of',
+				'intitle:"Index of /" +{directory}',
+				'intitle:"Index of /" inurl:{directory}'
+			]
+			// add more categories and dork queries as needed
+		};
+
+		function searchDorks(event) {
+			event.preventDefault();
+			const category = document.getElementById('category').value;
+			const domain = document.getElementById('domain').value;
+			const dorks = dorkCategories[category];
+			const searchResults = [];
+
+			dorks.forEach(dork => {
+				const query = dork.replace('{directory}', domain);
+				const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+				searchResults.push({
+					query: dork,
+					url: searchUrl
+				});
+			});
+
+			// Open each search result in a new browser tab
+			searchResults.forEach(result => {
+				window.open(result.url, '_blank');
+			});
+
+			return false;
+		}
+	</script>
+</head>
+<body>
+	<h1>Dork Search</h1>
+	<form onsubmit="return searchDorks(event);">
+		<label for="category">Category:</label>
+		<select id="category">
+			<option value="Sensitive Directories">Sensitive Directories</option>
+			<!-- add more categories here -->
+		</select>
+		<label for="domain">Domain:</label>
+		<input type="text" id="domain">
+		<input type="submit" value="Search">
+	</form>
+</body>
 </html>

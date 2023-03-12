@@ -89,6 +89,10 @@
 			font-size: 36px;
 			text-align: center;
 		}
+		p {
+			text-align: center;
+			font-size: 20px;
+		}
 		button {
 			display: block;
 			margin: 0 auto;
@@ -101,10 +105,11 @@
 	<h1>Targeted Platform Research</h1>
 	<p>💡 Search Tip: Define your keyword of interest e.g., name of company </p>
 	<button onclick="searchGitHub()">GitHub</button>
+	
 	<script>
 	function searchGitHub() {
 	  var site = "site:github.com OR site:github.io";
-	  var queries = ["inurl:readme filetype:md", "filename:package.json"];
+	  var queries = ["DORK", "DORK"];
 	  var keyword = prompt("Enter a keyword:");
 	  if (keyword !== null) {
 	  	for (var i = 0; i < queries.length; i++) {

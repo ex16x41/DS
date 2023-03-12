@@ -16,8 +16,13 @@
 		const dorkCategories = {
 			'Targeted Query': [
 				'intitle:index.of',
-				'intitle:"Index of /" +{directory}',
-				'intitle:"Index of /" inurl:{directory}'
+				'intitle:"Index of /" {directory}',
+				'intitle:"Index of /" {directory}'
+			]
+				'Misconfigurations': [
+				'intitle:index.of',
+				'intitle:"Index of /" {directory}',
+				'intitle:"Index of /" {directory}'
 			]
 			// add more categories and dork queries as needed
 		};
@@ -79,6 +84,7 @@ emphasising public exposure using the power of Google Dorking and out-of-box que
 			<label for="category">Category:</label>
 			<select id="category">
 				<option value="Targeted Query">Targeted Query</option>
+				<option value="Misconfigurations">Misconfigurations</option>
 				<!-- add more categories here -->
 			</select>
 			<br>

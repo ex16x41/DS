@@ -17,6 +17,14 @@
 				'intitle:index.of',
 				'intitle:"Index of /" +{directory}',
 				'intitle:"Index of /" inurl:{directory}'
+				
+			],
+			'GitHub': [
+				'site:github.com inurl:password',
+				'site:github.com inurl:secrets',
+				'site:github.com "AWS_SECRET_ACCESS_KEY" "AWS_ACCESS_KEY_ID"',
+				'site:github.com "-----BEGIN RSA PRIVATE KEY-----" "-----END RSA PRIVATE KEY-----"',
+				'site:github.com filetype:yml',
 			]
 			// add more categories and dork queries as needed
 		};
@@ -55,11 +63,13 @@
 			<label for="category">Category:</label>
 			<select id="category">
 				<option value="Targeted Query">Targeted Query</option>
+				<option value="GitHub">GitHub</option>
 				<!-- add more categories here -->
 			</select>
 			<label for="domain">Domain:</label>
 			<input type="text" id="domain">
 			<input type="submit" value="Search">
+			<button onclick="window.open('https://www.google.com/search?q=site%3Agithub.com+OR+site%3Agithub.io+'+encodeURIComponent(dorkCategories['GitHub'].join(' OR ')), '_blank')">GitHub</button>
 		</form>
 	</div>
 </body>

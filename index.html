@@ -81,8 +81,6 @@
 	</style>
 </head>
 <body>
-<!DOCTYPE html>
-<html>
 <head>
 	<title>Targeted Platform Research</title>
 	<style>
@@ -101,6 +99,7 @@
 <body>
 	<h1>Targeted Platform Research</h1>
 	<button onclick="searchGitHub()">GitHub</button>
+	<p> Search Tip: Define your keyword of interest e.g., name of company </p>
 
 	<script>
 	function searchGitHub() {
@@ -109,7 +108,7 @@
 	  var keyword = prompt("Enter a keyword:");
 	  if (keyword !== null) {
 	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " " + keyword + " " + queries[i], "_blank");
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
 	  	}
 	  }
 	}

@@ -3,7 +3,7 @@
 </div>
 
 ## **🔎 ABOUT**
-OSINTYR is a tool that helps OSINT investigators and cybersecurity researchers to leverage the full power of Google dorking for their investigations. Google dorking is a technique that uses advanced search operators to uncover hidden information and vulnerabilities in websites and web applications. However, crafting effective dork queries requires creativity, knowledge, and experience.
+OSINTYR https://ex16x41.github.io/OSINTYR/ is a tool that helps OSINT investigators and cybersecurity researchers to leverage the full power of Google dorking for their investigations. Google dorking is a technique that uses advanced search operators to uncover hidden information and vulnerabilities in websites and web applications. However, crafting effective dork queries requires creativity, knowledge, and experience.
 
 👉 The tool relies only and only on open source intelligence and information indexed by the Google search engine
 

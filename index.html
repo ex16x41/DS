@@ -17,14 +17,6 @@
 				'intitle:index.of',
 				'intitle:"Index of /" +{directory}',
 				'intitle:"Index of /" inurl:{directory}'
-				
-			],
-			'GitHub': [
-				'site:github.com inurl:password',
-				'site:github.com inurl:secrets',
-				'site:github.com "AWS_SECRET_ACCESS_KEY" "AWS_ACCESS_KEY_ID"',
-				'site:github.com "-----BEGIN RSA PRIVATE KEY-----" "-----END RSA PRIVATE KEY-----"',
-				'site:github.com filetype:yml',
 			]
 			// add more categories and dork queries as needed
 		};
@@ -63,28 +55,45 @@
 			<label for="category">Category:</label>
 			<select id="category">
 				<option value="Targeted Query">Targeted Query</option>
-				<option value="GitHub">GitHub</option>
 				<!-- add more categories here -->
 			</select>
 			<label for="domain">Domain:</label>
 			<input type="text" id="domain">
 			<input type="submit" value="Search">
-			<button onclick="window.open('https://www.google.com/search?q=site%3Agithub.com+OR+site%3Agithub.io+'+encodeURIComponent(dorkCategories['GitHub'].join(' OR ')), '_blank')">GitHub</button>
 		</form>
 	</div>
 	
-	<title>Search GitHub</title>
+<head>
+	<title>Targeted Research</title>
+	<style>
+		h1 {
+			font-size: 36px;
+			text-align: center;
+		}
+		button {
+			display: block;
+			margin: 0 auto;
+			font-size: 24px;
+			padding: 10px 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Targeted Research</h1>
 	<button onclick="searchGitHub()">GitHub</button>
 
 	<script>
 	function searchGitHub() {
-	  var queries = ["inurl:readme filetype:md", "filename:README.md", "filename:package.json"];
 	  var site = "site:github.com OR site:github.io";
+	  var queries = ["inurl:readme filetype:md", "filename:package.json"];
 	  for (var i = 0; i < queries.length; i++) {
-	    window.open("https://www.google.com/search?q=" + queries[i] + " " + site, "_blank");
+	    window.open("https://www.google.com/search?q=" + site + " " + queries[i], "_blank");
 	  }
 	}
 	</script>
+</body>
+</html>
+
 
 </body>
 </html>

@@ -13,7 +13,7 @@ OSINTYR https://ex16x41.github.io/OSINTYR/ is a tool that helps OSINT investigat
 
 🛠️ This is not the final version, I am looking into adding more cool things for this in the future when thre's time.
 
-⛔ OSINTYR was created and to be used only be used for educational purposes, therfore any all liability and responsability from the usage of this tool is on the user itself. 
+⛔ OSINTYR was created and to be used only for educational purposes, therfore any all liability and responsability from the usage of this tool is on the user itself. 
 
 📭 Feedback/ideas are welcomed! 
 

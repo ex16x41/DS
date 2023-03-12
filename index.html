@@ -106,9 +106,39 @@
 	<p>💡 Search Tip: Define your keyword of interest e.g., name of company </p>
 	<button onclick="searchGitHub()">GitHub</button>
 	
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Targeted Platform Research</title>
+	<style>
+		h1, p, button {
+			text-align: center;
+		}
+		h1 {
+			font-size: 2em;
+		}
+	</style>
+</head>
+<body>
+	<h1>Targeted Platform Research</h1>
+	<p>💡 Search Tip: Define your keyword of interest e.g., name of company </p>
+	<button onclick="searchGitHub()">GitHub</button>
+	<button onclick="searchPastebin()">Pastebin</button>
+
 	<script>
 	function searchGitHub() {
 	  var site = "site:github.com OR site:github.io";
+	  var queries = ["inurl:readme filetype:md", "filename:package.json"];
+	  var keyword = prompt("Enter a keyword:");
+	  if (keyword !== null) {
+	  	for (var i = 0; i < queries.length; i++) {
+	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
+	  	}
+	  }
+	}
+
+	function searchPastebin() {
+	  var site = "site:pastebin.com";
 	  var queries = ["DORK", "DORK"];
 	  var keyword = prompt("Enter a keyword:");
 	  if (keyword !== null) {
@@ -118,6 +148,9 @@
 	  }
 	}
 	</script>
+</body>
+</html>
+
 </body>
 </html>
 

@@ -2,6 +2,15 @@
 <html>
 <head>
 	<title>Dork Search</title>
+	<style type="text/css">
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+	</style>
 	<script type="text/javascript">
 		const dorkCategories = {
 			'Sensitive Dirs': [
@@ -38,16 +47,19 @@
 	</script>
 </head>
 <body>
-	<h1>Dork Search</h1>
-	<form onsubmit="return searchDorks(event);">
-		<label for="category">Category:</label>
-		<select id="category">
-			<option value="Sensitive Dirs">Sensitive Dirs</option>
-			<!-- add more categories here -->
-		</select>
-		<label for="domain">Domain:</label>
-		<input type="text" id="domain">
-		<input type="submit" value="Search">
-	</form>
+	<div class="container">
+		<img src="https://user-images.githubusercontent.com/44981946/224496641-43c82f4d-e1b7-4347-806a-28c3562fa9c0.png" alt="Logo Placeholder">
+		<h1>Dork Search</h1>
+		<form onsubmit="return searchDorks(event);">
+			<label for="category">Category:</label>
+			<select id="category">
+				<option value="Sensitive Dirs">Sensitive Dirs</option>
+				<!-- add more categories here -->
+			</select>
+			<label for="domain">Domain:</label>
+			<input type="text" id="domain">
+			<input type="submit" value="Search">
+		</form>
+	</div>
 </body>
 </html>

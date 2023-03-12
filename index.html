@@ -53,6 +53,7 @@
 		<p>
 		🐦🔍 Created for educational OSINT by Eva Prokofiev (<a href="https://twitter.com/ex16x41">@ex16x41</a>)
 	</p>
+		<p>💡 Search Tip: Add here </p>
 		<form onsubmit="return searchDorks(event);">
 			<label for="category">Category:</label>
 			<select id="category">
@@ -98,9 +99,8 @@
 </head>
 <body>
 	<h1>Targeted Platform Research</h1>
+	<p>💡 Search Tip: Define your keyword of interest e.g., name of company </p>
 	<button onclick="searchGitHub()">GitHub</button>
-	<p> Search Tip: Define your keyword of interest e.g., name of company </p>
-
 	<script>
 	function searchGitHub() {
 	  var site = "site:github.com OR site:github.io";

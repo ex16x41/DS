@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
+    <title>Search for S3 Buckets</title>
+  </head>
+  <body>
+        <style>
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-    <title>Search for S3 Buckets</title>
-      </style>
-  </head>
-  <body>
     <input type="text" id="url" placeholder="Enter website URL">
     <button onclick="searchForS3()">Search</button>
     <div id="results"></div>
-
+</style>
     <script>
       function searchForS3() {
         const url = document.getElementById("url").value;

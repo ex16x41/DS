@@ -8,7 +8,6 @@
         <input type="text" id="search-query" name="search-query" />
         <button type="submit">Search</button>
     </form>
-    <div id="search-results"></div>
 
     <script>
         document.getElementById('search-form').addEventListener('submit', function(event) {
@@ -16,28 +15,8 @@
 
             var query = document.getElementById('search-query').value;
 
-            fetch('https://www.google.com/search?q=' + encodeURIComponent(query))
-                .then(response => response.text())
-                .then(data => {
-                    var parser = new DOMParser();
-                    var doc = parser.parseFromString(data, 'text/html');
-
-                    var resultsDiv = document.getElementById('search-results');
-                    resultsDiv.innerHTML = '';
-
-                    var searchResults = doc.querySelectorAll('.g');
-                    searchResults.forEach(function(result) {
-                        var anchors = result.querySelectorAll('a');
-                        if (anchors.length > 0) {
-                            var link = anchors[0].href;
-                            var title = result.querySelector('h3').textContent;
-
-                            var resultDiv = document.createElement('div');
-                            resultDiv.innerHTML = '<a href="' + link + '">' + title + '</a>';
-                            resultsDiv.appendChild(resultDiv);
-                        }
-                    });
-                });
+            var url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+            window.open(url, '_blank');
         });
     </script>
 </body>

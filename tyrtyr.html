@@ -67,8 +67,10 @@
         const dorks = [
             "site:example.com ext:php inurl:?",
             "site:openbugbounty.org inurl:reports intext:\"example.com\"",
-            "site:\"example[.]com\" ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess",
+            "site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess",
             "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com",
+	    "site:example.com -www -help -support -community -developer -event -blog",
+	
         ];
         document.getElementById("search-btn").addEventListener("click", search);
 

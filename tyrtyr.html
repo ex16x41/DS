@@ -36,10 +36,24 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            max-width: 200px;
+            max-height: 100px;
+        }
     </style>
 </head>
 <body>
-    <h1>Dorks Explorer</h1>
+    <header>
+        <h1>Dorks Explorer</h1>
+        <img class="logo" src="https://user-images.githubusercontent.com/44981946/224549215-edbd2aae-c194-4826-a226-ba1565e38855.png" alt="Logo">
+    </header>
     <p>Enter a keyword and get started:</p>
 
     <input type="text" id="keyword" name="keyword">
@@ -48,42 +62,34 @@
     <div id="result"></div>
 
     <script>
+        const googleLink = "https://www.google.com/search?q=";
+        const dorks = [
+            "site:example.com ext:php inurl:?",
+            "site:openbugbounty.org inurl:reports intext:\"example.com\"",
+            "site:\"example[.]com\" ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess",
+            "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com",
+        ];
 
- function search() {
+        function search() {
+            const keyword = document.getElementById("keyword").value;
+            const result = document.getElementById("result");
 
-    var keyword = document.getElementById('keyword').value;
+            if (!keyword) {
+                alert("Please enter a keyword.");
+                return;
+            }
 
-    var domain = "example[.]com";
+            let output = "<h2>Results for keyword: " + keyword + "</h2>";
+            output += "<ul>";
 
+            dorks.forEach(dork => {
+                const modifiedDork = dork.replace("example.com", keyword);
+                output += "<li><a href='" + googleLink + encodeURIComponent(modifiedDork) + "' target='_blank'>" + modifiedDork + "</a></li>";
+            });
 
-    if(keyword){
-
-      var searchString = "site:\"" + domain + "\" " + keyword;
-
-      window.open("https://www.google.com/search?q=" + encodeURIComponent(searchString));
-
-    }
-
-    else {
-
-      var searchString = "site:\"" + domain + "\"";
-
-      var extensions = ["log", "txt", "conf", "cnf", "ini", "env", "sh", "bak", "backup", "swp", "old", "~", "git", "svn", "htpasswd", "htaccess"];
-
-
-      for (var i = 0; i < extensions.length; i++) {
-
-        searchString += " ext:" + extensions[i];
-
-      }
-
-
-      window.open("https://www.google.com/search?q=" + encodeURIComponent(searchString));
-
-    }
-
- }
-
-</script>
+            output += "</ul>";
+            result.innerHTML = output;
+        }
+    </script>
 </body>
 </html>

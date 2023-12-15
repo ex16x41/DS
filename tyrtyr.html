@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do5</title>
+    <title>Do6</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,7 +29,8 @@
             margin: 8px 0;
             border: none;
             cursor: pointer;
-            width: 100%;
+            width: 80%; /* Adjust the width as needed */
+            box-sizing: border-box;
         }
 
         button:hover {
@@ -45,7 +46,7 @@
             box-sizing: border-box;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
         }
 
         header {
@@ -110,11 +111,11 @@
             }
 
             let output = "<h2>Results for Domain: " + domain + "</h2>";
-            output += "<div>";
+            output += "<div id='button-container'>";
 
             dorks.forEach(dork => {
                 const modifiedDork = dork.query.replace("example.com", domain);
-                output += `<button onclick="window.open('${googleLink + encodeURIComponent(modifiedDork)}', '_blank')">${dork.description}</button>`;
+                output += `<div class='button-box'><button onclick="window.open('${googleLink + encodeURIComponent(modifiedDork)}', '_blank')">${dork.description}</button></div>`;
             });
 
             output += "</div>";

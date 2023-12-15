@@ -55,9 +55,9 @@
         <h1>Dorks Explorer</h1>
         <img class="logo" src="https://i.ibb.co/GddTPtK/osintyr-removebg-preview.png" alt="Logo">
     </header>
-    <p>Enter a keyword and get started:</p>
+    <p>Enter domain and get started:</p>
 
-    <input type="text" id="keyword" name="keyword">
+    <input type="text" id="domain" name="domain">
     <button onclick="search()">Search</button>
 
     <div id="result"></div>
@@ -72,7 +72,7 @@
         ];
         document.getElementById("search-btn").addEventListener("click", search);
 
-        document.getElementById("keyword").addEventListener("keyup", function(event) {
+        document.getElementById("domain").addEventListener("keyup", function(event) {
 
             if (event.keyCode === 13) {
 
@@ -87,32 +87,32 @@
 
         function search() {
 
-            const keyword = document.getElementById("keyword").value;
+            const domain = document.getElementById("domain").value;
 
             const result = document.getElementById("result");
 
 
-            if (!keyword) {
+            if (!domain) {
 
-                alert("Please enter a keyword.");
+                alert("Please enter a domain.");
 
                 return;
 
             }
 
-            let output = "<h2>Results for Domain: " + keyword + "</h2>";
+            let output = "<h2>Results for Domain: " + domain + "</h2>";
 
 
             output += "<h3>PHP Files</h3>";
 
             output += "<ul>";
 
-            output += "<li><a href='" + googleLink + encodeURIComponent(dorks[0].replace("example.com", keyword)) + "' target='_blank'>" + dorks[0].replace("example.com", keyword) + "</a></li>";
+            output += "<li><a href='" + googleLink + encodeURIComponent(dorks[0].replace("example.com", domain)) + "' target='_blank'>" + dorks[0].replace("example.com", domain) + "</a></li>";
 
             output += "</ul>";
 
             dorks.forEach(dork => {
-                const modifiedDork = dork.replace("example.com", keyword);
+                const modifiedDork = dork.replace("example.com", domain);
                 output += "<li><a href='" + googleLink + encodeURIComponent(modifiedDork) + "' target='_blank'>" + modifiedDork + "</a></li>";
             });
 

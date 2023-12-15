@@ -65,6 +65,7 @@
     <script>
         const googleLink = "https://www.google.com/search?q=";
         const dorks = [
+	    "<h3>PHP Files</h3>"
             "site:example.com ext:php inurl:?",
             "site:openbugbounty.org inurl:reports intext:\"example.com\"",
             "site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess",
@@ -103,11 +104,6 @@
             }
 
             let output = "<h2>Results for Domain: " + domain + "</h2>";
-
-
-            output += "<h3>PHP Files</h3>";
-
-            output += "<ul>";
 
             output += "<li><a href='" + googleLink + encodeURIComponent(dorks[0].replace("example.com", domain)) + "' target='_blank'>" + dorks[0].replace("example.com", domain) + "</a></li>";
 

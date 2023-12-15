@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dorkkk</title>
+    <title>OSINTYR</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -71,6 +71,20 @@
             { query: "site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess", description: "Log and Configuration Files" },
             { query: "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com", description: "Search Query in URL" },
             { query: "site:example.com -www -help -support -community -developer -event -blog", description: "Exclude Subdomains and Unwanted Pages" },
+            // Additional queries
+            { query: "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com", description: "XSS Prone Parameters" },
+            { query: "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:example.com", description: "Open Redirect Prone Parameters" },
+            { query: "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:example.com", description: "SQLi Prone Parameters" },
+            { query: "inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain= | inurl:page= inurl:& site:example.com", description: "SSRF Prone Parameters" },
+            { query: "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:example.com", description: "LFI Prone Parameters" },
+            { query: "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:example.com", description: "RCE Prone Parameters" },
+            { query: "inurl:config | inurl:env | inurl:setting | inurl:backup | inurl:admin | inurl:php site:example.com", description: "High % inurl Keywords" },
+            { query: "inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:example.com", description: "Sensitive Parameters" },
+            { query: "inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:example.com", description: "API Docs" },
+            { query: "site:pastebin.com \"example.com\"", description: "Code Leaks - Pastebin" },
+            { query: "site:jsfiddle.net \"example.com\"", description: "Code Leaks - JSFiddle" },
+            { query: "site:codebeautify.org \"example.com\"", description: "Code Leaks - Code Beautify" },
+            { query: "site:codepen.io \"example.com\"", description: "Code Leaks - CodePen" },
         ];
 
         function search() {

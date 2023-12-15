@@ -48,34 +48,42 @@
     <div id="result"></div>
 
     <script>
-        const googleLink = "https://www.google.com/search?q=";
-        const dorks = [
-            "site:example.com ext:php inurl:?",
-            "site:openbugbounty.org inurl:reports intext:\"example.com\"",
-            "site:\"example[.]com\" ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess",
-            "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com",
-        ];
 
-        function search() {
-            const keyword = document.getElementById("keyword").value;
-            const result = document.getElementById("result");
+ function search() {
 
-            if (!keyword) {
-                alert("Please enter a keyword.");
-                return;
-            }
+    var keyword = document.getElementById('keyword').value;
 
-            let output = "<h2>Results for keyword: " + keyword + "</h2>";
-            output += "<ul>";
+    var domain = "example[.]com";
 
-            dorks.forEach(dork => {
-                const modifiedDork = dork.replace("example.com", keyword);
-                output += "<li><a href='" + googleLink + encodeURIComponent(modifiedDork) + "' target='_blank'>" + modifiedDork + "</a></li>";
-            });
 
-            output += "</ul>";
-            result.innerHTML = output;
-        }
-    </script>
+    if(keyword){
+
+      var searchString = "site:\"" + domain + "\" " + keyword;
+
+      window.open("https://www.google.com/search?q=" + encodeURIComponent(searchString));
+
+    }
+
+    else {
+
+      var searchString = "site:\"" + domain + "\"";
+
+      var extensions = ["log", "txt", "conf", "cnf", "ini", "env", "sh", "bak", "backup", "swp", "old", "~", "git", "svn", "htpasswd", "htaccess"];
+
+
+      for (var i = 0; i < extensions.length; i++) {
+
+        searchString += " ext:" + extensions[i];
+
+      }
+
+
+      window.open("https://www.google.com/search?q=" + encodeURIComponent(searchString));
+
+    }
+
+ }
+
+</script>
 </body>
 </html>

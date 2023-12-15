@@ -46,6 +46,7 @@
         .logo {
             max-width: 200px;
             max-height: 100px;
+            margin-left: auto;
         }
     </style>
 </head>
@@ -70,20 +71,6 @@
             "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com",
             "site:example.com -www -help -support -community -developer -event -blog",
         ];
-        document.getElementById("search-btn").addEventListener("click", search);
-
-        document.getElementById("domain").addEventListener("keyup", function(event) {
-
-            if (event.keyCode === 13) {
-
-                event.preventDefault();
-
-                search();
-
-            }
-
-        });
-
 
         function search() {
 
@@ -102,6 +89,8 @@
 
             let output = "<h2>Results for Domain: " + domain + "</h2>";
 
+            output += "<ul>";
+
             output += "<li><a href='" + googleLink + encodeURIComponent(dorks[0].replace("example.com", domain)) + "' target='_blank'>" + dorks[0].replace("example.com", domain) + "</a></li>";
 
             output += "</ul>";
@@ -110,6 +99,8 @@
                 const modifiedDork = dork.replace("example.com", domain);
                 output += "<li><a href='" + googleLink + encodeURIComponent(modifiedDork) + "' target='_blank'>" + modifiedDork + "</a></li>";
             });
+
+            output += "</ul>";
 
             result.innerHTML = output;
 

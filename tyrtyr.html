@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do4</title>
+    <title>Do5</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 100vh; /* Full viewport height */
             margin: 0;
         }
 
@@ -37,12 +37,15 @@
         }
 
         #result {
-            margin: 20px 0;
+            margin-top: 20px;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             width: 100%;
             box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
 
         header {
@@ -51,17 +54,20 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         .logo {
-            max-width: 500px; /* Adjust the size as needed */
-            max-height: 500px; /* Adjust the size as needed */
+            display: block;
+            margin: 0 auto;
+            max-width: 500px;
+            max-height: 500px;
         }
     </style>
 </head>
 <body>
     <header>
+        <h1>Dorks Explorer</h1>
         <img class="logo" src="https://i.ibb.co/GddTPtK/osintyr-removebg-preview.png" alt="Logo">
     </header>
     <p>Enter domain and get started:</p>
@@ -104,14 +110,14 @@
             }
 
             let output = "<h2>Results for Domain: " + domain + "</h2>";
-            output += "<ul>";
+            output += "<div>";
 
             dorks.forEach(dork => {
                 const modifiedDork = dork.query.replace("example.com", domain);
-                output += `<li><strong>${dork.description}:</strong> <a href='${googleLink + encodeURIComponent(modifiedDork)}' target='_blank'>${modifiedDork}</a></li>`;
+                output += `<button onclick="window.open('${googleLink + encodeURIComponent(modifiedDork)}', '_blank')">${dork.description}</button>`;
             });
 
-            output += "</ul>";
+            output += "</div>";
             result.innerHTML = output;
         }
     </script>

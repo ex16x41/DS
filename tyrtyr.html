@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dork3r</title>
+    <title>Dorks Explorer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,9 +44,10 @@
         }
 
         .logo {
+            display: block;
+            margin: 0 auto;
             max-width: 200px;
             max-height: 100px;
-            margin-left: auto;
         }
     </style>
 </head>
@@ -73,27 +74,16 @@
         ];
 
         function search() {
-
             const domain = document.getElementById("domain").value;
-
             const result = document.getElementById("result");
 
-
             if (!domain) {
-
                 alert("Please enter a domain.");
-
                 return;
-
             }
 
             let output = "<h2>Results for Domain: " + domain + "</h2>";
-
             output += "<ul>";
-
-            output += "<li><a href='" + googleLink + encodeURIComponent(dorks[0].replace("example.com", domain)) + "' target='_blank'>" + dorks[0].replace("example.com", domain) + "</a></li>";
-
-            output += "</ul>";
 
             dorks.forEach(dork => {
                 const modifiedDork = dork.replace("example.com", domain);
@@ -101,9 +91,7 @@
             });
 
             output += "</ul>";
-
             result.innerHTML = output;
-
         }
     </script>
 </body>

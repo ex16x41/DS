@@ -80,8 +80,16 @@
                 return;
             }
 
-            let output = "<h2>Results for keyword: " + keyword + "</h2>";
+            let output = "<h2>Results for Domain: " + keyword + "</h2>";
+
+
+            output += "<h3>PHP Files</h3>";
+
             output += "<ul>";
+
+            output += "<li><a href='" + googleLink + encodeURIComponent(dorks[0].replace("example.com", keyword)) + "' target='_blank'>" + dorks[0].replace("example.com", keyword) + "</a></li>";
+
+            output += "</ul>";
 
             dorks.forEach(dork => {
                 const modifiedDork = dork.replace("example.com", keyword);

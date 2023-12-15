@@ -70,14 +70,34 @@
             "site:\"example[.]com\" ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess",
             "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com",
         ];
+        document.getElementById("search-btn").addEventListener("click", search);
+
+        document.getElementById("keyword").addEventListener("keyup", function(event) {
+
+            if (event.keyCode === 13) {
+
+                event.preventDefault();
+
+                search();
+
+            }
+
+        });
+
 
         function search() {
+
             const keyword = document.getElementById("keyword").value;
+
             const result = document.getElementById("result");
 
+
             if (!keyword) {
+
                 alert("Please enter a keyword.");
+
                 return;
+
             }
 
             let output = "<h2>Results for Domain: " + keyword + "</h2>";

@@ -66,11 +66,11 @@
     <script>
         const googleLink = "https://www.google.com/search?q=";
         const dorks = [
-            "site:example.com ext:php inurl:?",
-            "site:openbugbounty.org inurl:reports intext:\"example.com\"",
-            "site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess",
-            "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com",
-            "site:example.com -www -help -support -community -developer -event -blog",
+            { query: "site:example.com ext:php inurl:?", description: "PHP Files" },
+            { query: "site:openbugbounty.org inurl:reports intext:\"example.com\"", description: "Bugbounty Reports" },
+            { query: "site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess", description: "Log and Configuration Files" },
+            { query: "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com", description: "Search Query in URL" },
+            { query: "site:example.com -www -help -support -community -developer -event -blog", description: "Exclude Subdomains and Unwanted Pages" },
         ];
 
         function search() {
@@ -86,8 +86,8 @@
             output += "<ul>";
 
             dorks.forEach(dork => {
-                const modifiedDork = dork.replace("example.com", domain);
-                output += "<li><a href='" + googleLink + encodeURIComponent(modifiedDork) + "' target='_blank'>" + modifiedDork + "</a></li>";
+                const modifiedDork = dork.query.replace("example.com", domain);
+                output += `<li><strong>${dork.description}:</strong> <a href='${googleLink + encodeURIComponent(modifiedDork)}' target='_blank'>${modifiedDork}</a></li>`;
             });
 
             output += "</ul>";

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorks Explorer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        #result {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dorks Explorer</h1>
+    <p>Enter a keyword and get started:</p>
+
+    <input type="text" id="keyword" name="keyword">
+    <button onclick="search()">Search</button>
+
+    <div id="result"></div>
+
+    <script>
+        const googleLink = "https://www.google.com/search?q=";
+        const dorks = [
+            "site:example.com ext:php inurl:?",
+            "site:openbugbounty.org inurl:reports intext:\"example.com\"",
+            "site:\"example[.]com\" ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess",
+            "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com",
+        ];
+
+        function search() {
+            const keyword = document.getElementById("keyword").value;
+            const result = document.getElementById("result");
+
+            if (!keyword) {
+                alert("Please enter a keyword.");
+                return;
+            }
+
+            let output = "<h2>Results for keyword: " + keyword + "</h2>";
+            output += "<ul>";
+
+            dorks.forEach(dork => {
+                const modifiedDork = dork.replace("example.com", keyword);
+                output += "<li><a href='" + googleLink + encodeURIComponent(modifiedDork) + "' target='_blank'>" + modifiedDork + "</a></li>";
+            });
+
+            output += "</ul>";
+            result.innerHTML = output;
+        }
+    </script>
+</body>
+</html>

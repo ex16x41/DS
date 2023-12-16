@@ -1,315 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="icon" type="image/png" href="https://user-images.githubusercontent.com/44981946/224549215-edbd2aae-c194-4826-a226-ba1565e38855.png">
-	<title>OSINTYR</title>
-	<style type="text/css">
-		.container {
-			display: flex;
-			flex-direction: column;
-			align-items: left;
-			justify-content: left;
-			height: 100vh;
-		}
-	</style>
-		<script type="text/javascript">
-		const dorkCategories = {
-			'Technologies': [
-				'intitle:version',
-				'intext:"powered by" {directory}',
-				'intext:"Support" {directory}'
-			],
-				'Misconfigurations': [
-				'intitle:index.of',
-				'intitle:"Index of /" {directory}',
-				'intitle:"Index of /" {directory}'
-			],
-				'Documents': [
-				'intitle:index.of',
-				'intitle:"Index of /" {directory}',
-				'intitle:"Index of /" {directory}'
-			],
-				'OpenRedirects': [
-				'intitle:index.of',
-				'intitle:"Index of /" {directory}',
-				'intitle:"Index of /" {directory}'
-			],
-				'Infrastructure': [
-				'intitle:index.of',
-				'intitle:"Index of /" {directory}',
-				'intitle:"Index of /" {directory}'
-			]
-			
-			// add more categories and dork queries as needed
-		};
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+        }
 
-		function searchDorks(event) {
-			event.preventDefault();
-			const category = document.getElementById('category').value;
-			const domain = document.getElementById('domain').value;
-			const dorks = dorkCategories[category];
-			const searchResults = [];
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
 
-			dorks.forEach(dork => {
-				const query = 'site:' + domain + ' ' + dork.replace('{directory}', '');
-				const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-				searchResults.push({
-					query: dork,
-					url: searchUrl
-				});
-			});
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 80%; /* Adjust the width as needed */
+            box-sizing: border-box;
+        }
 
-			// Open each search result in a new browser tab
-			searchResults.forEach(result => {
-				window.open(result.url, '_blank');
-			});
+        button:hover {
+            opacity: 0.8;
+        }
 
-			return false;
-		}
-	</script>
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 500px;
+            max-height: 500px;
+        }
+    </style>
 </head>
 <body>
-  <style>
-    body {
-      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,1)), url(https://user-images.githubusercontent.com/44981946/224546449-c98cc0c0-ab33-4592-9524-59edaa88fd9c.PNG);
-      background-size: cover;
-      background-repeat: no-repeat;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 30px;
-    }
-  </style>
-	</script>	
-	<div class="container">
-		<h1>Internal OSINT</h1>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-		<p> ❓ OSINTYR is a tool made for educational purposes, gathering data using open source intelligence from variety of platforms, 
-emphasising public exposure using the power of Google Dorking and out-of-box queries.(<a href="https://github.com/ex16x41/OSINTYR">ABOUT OSINTYR</a>) 🔍 Made by Eva Prokofiev (<a href="https://twitter.com/ex16x41">@ex16x41</a>)</p> 
+    <header>
+        <h1>Dorks Explorer</h1>
+        <img class="logo" src="https://i.ibb.co/GddTPtK/osintyr-removebg-preview.png" alt="Logo">
+    </header>
+    <p>Enter domain and get started:</p>
 
-		<br>
-		<br>
-		<br>
-		<br>
-		<form onsubmit="return searchDorks(event);">
-			<label for="category">Detect:</label>
-			<select id="category">
-				<option value="Technologies">Technologies</option>
-				<option value="Misconfigurations">Misconfigurations</option>
-				<option value="Documents">Documents</option>
-				<option value="OpenRedirects">Open Redirects</option>
-				<option value="Infrastructure">Infrastructure</option>
+    <input type="text" id="domain" name="domain">
+    <button onclick="search()">Search</button>
 
-				<!-- add more categories here -->
-			</select>
-			<label for="domain">Domain:</label>
-			<input type="text" id="domain">
-			<input type="submit" value="Search">
-		</form>
-		<p>💡 Search Tip: Add here </p>
-	<h1>External Platform OSINT</h1>
-	<p>💡 Search Tip: Define your keyword of interest e.g., name of company </p>
-		
-<style>
-  button {
-    padding: 5px 10px;
-    font-size: 14px;
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-  }
+    <div id="result"></div>
 
-  button:hover {
-    background-color: black;
-    color: white;
-    border-color: white;
-  }
-</style>		
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
-	<button onclick="searchGitHub()">GitHub</button>
-	<button onclick="searchPastebin()">Pastebin</button>
-	<button onclick="searchTelegram()">Telegram</button>
-</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
-	<button onclick="searchTwitter()">Twitter</button>
-	<button onclick="searchGitalt()">Git-Alternatives</button>
-	<button onclick="searchWix()">Wix</button>
-</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
-	<button onclick="searchAPKs()">APKs</button>
-	<button onclick="searchWP()">Wordpress</button>
-	<button onclick="searchDiscord()">Discord</button>
-</div>
-		
-	<div style="display: flex; flex-wrap: wrap; justify-content: center;">
-	<button onclick="searchForums()">Forums</button>
-	<button onclick="searchBlogs()">Blogs</button>
-	<button onclick="searchReddit()">Reddit</button>
-</div>
+    <script>
+        const googleLink = "https://www.google.com/search?q=";
+        const dorks = [
+            { query: "site:example.com ext:php inurl:?", description: "PHP Files" },
+            { query: "site:openbugbounty.org inurl:reports intext:\"example.com\"", description: "Bugbounty Reports" },
+            { query: "site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess", description: "Log and Configuration Files" },
+            { query: "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com", description: "Search Query in URL" },
+            { query: "site:example.com -www -help -support -community -developer -event -blog", description: "Exclude Subdomains and Unwanted Pages" },
+            { query: "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com", description: "XSS Prone Parameters" },
+            { query: "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:example.com", description: "Open Redirect Prone Parameters" },
+            { query: "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:example.com", description: "SQLi Prone Parameters" },
+            { query: "inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain= | inurl:page= inurl:& site:example.com", description: "SSRF Prone Parameters" },
+            { query: "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:example.com", description: "LFI Prone Parameters" },
+            { query: "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:example.com", description: "RCE Prone Parameters" },
+            { query: "inurl:config | inurl:env | inurl:setting | inurl:backup | inurl:admin | inurl:php site:example.com", description: "High % inurl Keywords" },
+            { query: "inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:example.com", description: "Sensitive Parameters" },
+            { query: "inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:example.com", description: "API Docs" },
+            { query: "site:pastebin.com \"example.com\"", description: "Code Leaks - Pastebin" },
+            { query: "site:jsfiddle.net \"example.com\"", description: "Code Leaks - JSFiddle" },
+            { query: "site:codebeautify.org \"example.com\"", description: "Code Leaks - Code Beautify" },
+            { query: "site:codepen.io \"example.com\"", description: "Code Leaks - CodePen" },
+        ];
 
-	</div>
+        function search() {
+            const domain = document.getElementById("domain").value;
+            const result = document.getElementById("result");
 
-	<style>
-		h1 {
-			font-size: 30px;
-			text-align: center;
-		}
-		p {
-			text-align: left;
-			font-size: 20px;
-		}
-		button {
-			display: block;
-			margin: 0 auto;
-			font-size: 13px;
-			padding: 10px 10px;
-		}
-		
-        </style>
+            if (!domain) {
+                alert("Please enter a domain.");
+                return;
+            }
 
-	<script>
-	function searchGitHub() {
-	  var site = "site:github.com OR site:github.io";
-	  var queries = ["test", "password"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
+            let output = "<h2>Results for Domain: " + domain + "</h2>";
+            output += "<div id='button-container'>";
 
-	function searchPastebin() {
-	  var site = "site:pastebin.com";
-	  var queries = ["DORK", "DORK"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchTelegram() {
-	  var site = "site:t.me";
-	  var queries = ["DORK", "DORK"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchTwitter() {
-	  var site = "site:t.co";
-	  var queries = ["DORK", "DORK"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchGitalt() {
-	  var site = "site:sourceforge.net OR site:github.com OR site:gitlab.com OR site:github.io";
-	  var queries = ["DORK", "DORK"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchWix() {
-	  var site = "site:wix.*.com OR site:*.wix.com OR site:*.wixsite.com";
-	  var queries = ["DORK", "DORK"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchAPKs() {
-	  var site = "apkmirror.com";
-	  var queries = ["DORK", "DORK"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchWP() {
-	  var site = "site:wordpress.com";
-	  var queries = ["DORK", "DORK"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchDiscord() {
-	  var site = "site:t.co";
-	  var queries = ["DORK", "DORK"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchForums() {
-	  var site = "site:*.*";
-	  var queries = ["inurl:tid", "inurl:forum"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchBlogs() {
-	  var site = "site:*.*";
-	  var queries = ["inurl:tid", "inurl:forum"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-		
-	  function searchReddit() {
-	  var site = "site:*.*";
-	  var queries = ["inurl:tid", "inurl:forum"];
-	  var keyword = prompt("Enter a keyword:");
-	  if (keyword !== null) {
-	  	for (var i = 0; i < queries.length; i++) {
-	    	window.open("https://www.google.com/search?q=" + site + " \"" + keyword + "\" " + queries[i], "_blank");
-	  	}
-	  }
-	}
-	</script>
-		
+            dorks.forEach(dork => {
+                const modifiedDork = dork.query.replace("example.com", domain);
+                output += `<div class='button-box'><button onclick="window.open('${googleLink + encodeURIComponent(modifiedDork)}', '_blank')">${dork.description}</button></div>`;
+            });
 
+            output += "</div>";
+            result.innerHTML = output;
+        }
+    </script>
 </body>
 </html>

@@ -17,6 +17,11 @@
             color: white; /* Set text color to white */
         }
 
+        :root {
+            --button-color: #4CAF50; /* Default button color */
+
+        }
+
         input[type="text"] {
             width: 100%;
             padding: 12px 20px;
@@ -41,7 +46,7 @@
         }  
   
         button:hover {
-            opacity: 0.8;
+            background-color: darken(var(--button-color), 10%); /* Darken the color on hover */
         }
 
         #result {
